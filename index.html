@@ -23,7 +23,7 @@
             text-align: center;
         }
 
-        /* 流动的霓虹渐变背景 */
+        /* 流动霓虹渐变背景 */
         .neon-background {
             position: absolute;
             top: 0;
@@ -48,7 +48,7 @@
             }
         }
 
-        /* Neon Glow Text */
+        /* 霓虹发光字体 */
         .neon-text {
             font-size: 3em;
             text-transform: uppercase;
@@ -76,7 +76,7 @@
             }
         }
 
-        /* CRT Effect */
+        /* 全局CRT效果(舍弃了pimgeek过于冗杂的css格式，转向更简便的模拟方式) */
         .crt {
             position: absolute;
             top: 0;
@@ -99,7 +99,7 @@
             }
         }
 
-        /* CRT scanlines */
+        /* CRT扫描(舍弃了pimgeek过于冗杂的css格式，转向更简便的模拟方式) */
         .crt:before {
             content: '';
             position: absolute;
@@ -111,7 +111,7 @@
             pointer-events: none;
         }
 
-        /* Flicker Animation */
+        /* Flicker动画(舍弃了pimgeek过于冗杂的css格式，转向更简便的模拟方式) */
         @keyframes flicker {
             0% {
                 opacity: 1;
@@ -124,19 +124,19 @@
             }
         }
 
-        /* Pulsing Neon Effect */
+        /* 仿霓虹脉动效果 */
         .pulse {
             animation: neon 2s ease-in-out infinite alternate, flicker 0.1s linear infinite;
         }
 
-        /* Header with CRT Effect */
+        /* 头部文字荧光灯管特效 */
         .header {
             position: relative;
             z-index: 1;
             margin-bottom: 20px;
         }
 
-        /* Footer */
+        /* 脚注 */
         .footer {
             position: absolute;
             bottom: 20px;
@@ -146,7 +146,7 @@
             font-size: 1.5em;
         }
 
-        /* Mobile Adaptations */
+        /* 移动端自适应 */
         @media (max-width: 768px) {
             .neon-text {
                 font-size: 2em;
@@ -175,18 +175,35 @@
             }
         }
 
+        /* 播放器毛玻璃效果 */
+        iframe {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 298px;
+            height: 52px;
+            border: none;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+            border-radius: 10px;
+            opacity: 0.1; /* 控制透明度 */
+        }
+
     </style>
 </head>
 <body>
 
+    <iframe src="https://music.163.com/outchain/player?type=2&id=2165763414&auto=1&height=32"></iframe>
+
     <div class="neon-background"></div>
     <div class="crt">
         <header class="header">
-            <h1 class="neon-text pulse">Welcome to Retro Future</h1>
+            <h1 class="neon-text pulse">Now Playing:Signals</h1>
             <p class="subheading neon-text pulse">Feel The Rhythm</p>
         </header>
         <footer class="footer">
-            <p class="neon-text pulse">A Site By Nob0dy</p>
+            <p class="neon-text pulse">A Site Designed By Nob0dy</p>
         </footer>
     </div>
 
