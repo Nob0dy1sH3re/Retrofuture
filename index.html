@@ -110,6 +110,28 @@
             background: repeating-linear-gradient(transparent, transparent 1px, rgba(255, 255, 255, 0.2) 2px);
             pointer-events: none;
         }
+    @font-face {
+    font-family: 'DigitalNumbers';
+    src: url('https://raw.githubusercontent.com//Nob0dy1sH3re/Retrofuture/fonts/DigitalNumbers-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+        /* 时钟容器（字体使用Stephan Ahlf的DigitalNumbers-Regular） */
+        .clock {
+            font-size: 6em;
+            color: #00ff00;
+            text-shadow: 
+                0 0 10px #00ff00, 
+                0 0 20px #00ff00, 
+                0 0 30px #00ff00;
+            margin-top: 40px;
+            letter-spacing: 5px;
+            position: absolute;  
+            top: 42%;  
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            font-family: 'DigitalNumbers', monospace; 
+        }
 
         /* Flicker动画(舍弃了pimgeek过于冗杂的css格式，转向更简便的模拟方式) */
         @keyframes flicker {
@@ -159,6 +181,10 @@
             .footer {
                 font-size: 1.2em;
             }
+
+            .clock {
+                font-size: 4em;
+            }
         }
 
         @media (max-width: 480px) {
@@ -172,6 +198,10 @@
 
             .footer {
                 font-size: 1em;
+            }
+
+            .clock {
+                font-size: 3em;
             }
         }
 
@@ -191,6 +221,7 @@
         }
 
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- 导入字体 -->
 </head>
 <body>
 
@@ -199,13 +230,31 @@
     <div class="neon-background"></div>
     <div class="crt">
         <header class="header">
-            <h1 class="neon-text pulse">Now Playing:Signals</h1>
+            <h1 class="neon-text pulse">Now Playing: Signals</h1>
             <p class="subheading neon-text pulse">Feel The Rhythm</p>
         </header>
+        
+        <div class="clock" id="clock"></div>
+        
         <footer class="footer">
             <p class="neon-text pulse">A Site Designed By Nob0dy</p>
         </footer>
     </div>
+
+    <script>
+        function updateClock() {
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // 每秒更新时钟
+        setInterval(updateClock, 1000);
+        updateClock(); // 初始化时钟
+    </script>
 
 </body>
 </html>
